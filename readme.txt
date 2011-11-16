@@ -30,7 +30,7 @@ If you have any issues please post something here:
 [Cartpauj Support Forums](http://cartpauj.com/forum "Cartpauj Support Forums")
 
 == Note ==
-Cartpauj Register Captcha should work with older versions of WordPress as well but was not tested with anything older than 2.7
+Cartpauj Register Captcha should work with older versions of WordPress as well but was not tested with anything older than 3.0
 
 == Frequently Asked Questions ==
 n/a
