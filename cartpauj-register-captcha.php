@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Cartpauj Register Captcha
-Plugin URI: http://cartpauj.com/projects/cartpauj-register-captcha-plugin/
+Plugin URI: http://cartpauj.icomnow.com/projects/cartpauj-register-captcha-plugin/
 Description: Adds a captcha form to WordPress registration page to prevent SPAM registrations.
-Version: 1.0.00
+Version: 1.0.01
 Author: Cartpauj
-Author URI: http://cartpauj.com/
+Author URI: http://cartpauj.icomnow.com/
 Copyright: 2009-2011, cartpauj
 
 GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/2.0/>
@@ -27,12 +27,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 add_action('register_form', 'crcc_add_to_form', 1000);
 function crcc_add_to_form()
 {
+	include_once("shared.php");
+	include_once("captcha_code.php");
+  
 	$plugin_url = WP_PLUGIN_URL.'/cartpauj-register-captcha/';
-	$plugin_path = WP_PLUGIN_DIR.'/cartpauj-register-captcha/';
-	include_once($plugin_path."shared.php");
-	include_once($plugin_path."captcha_code.php");
 	$crcc_captcha = new CaptchaCode();
 	$crcc_code = crcc_str_encrypt($crcc_captcha->generateCode(6));
+  
 	echo
 			'<p>
 				<label>Enter Code<br/>
@@ -40,17 +41,29 @@ function crcc_add_to_form()
 					<input type="text" name="crcc_security_code" class="input" value="" size="20" tabindex="1000"><br/>
 					<input type="hidden" name="crcc_security_check" value="'.$crcc_code.'">
 				</label>
+        
+        <label id="crcc_hp_label">HP<br/>
+          <input type="text" name="crcc_hp" value="" class="input" size="20" tabindex="1001" />
+        </label>
+        
+        <script>
+          document.getElementById("crcc_hp_label").style.display="none";
+        </script>
 			</p>';
 }
 
-add_action('register_post','crcc_check_code',10,3);
+add_action('register_post', 'crcc_check_code', 10, 3);
 function crcc_check_code($login, $email, $errors)
 {
-	$plugin_path = WP_PLUGIN_DIR.'/cartpauj-register-captcha/';
-	include_once($plugin_path."shared.php");
+	include_once("shared.php");
+  
 	$crcc_code = crcc_str_decrypt($_POST['crcc_security_check']);
+  
 	if(($crcc_code != $_POST['crcc_security_code']) && (!empty($crcc_code)))
 		$errors->add('crcc_error',__('<strong>ERROR</strong>: The code you entered was incorrect, please try again.'));
+  
+  if(!isset($_POST['crcc_hp']) || !empty($_POST['crcc_hp']))
+    $errors->add('crcc_error2', __('<strong>ERROR</strong>: Fatal error occurred.'));
 }
 
 /************************************************************************************
@@ -63,6 +76,7 @@ function crcc_check_code($login, $email, $errors)
 function crcc_login_head()
 {
 	$plugin_url = WP_PLUGIN_URL.'/cartpauj-register-captcha/';
+  
 	echo
 			'<style type="text/css">
 				h1 a
