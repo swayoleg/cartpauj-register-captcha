@@ -1,22 +1,25 @@
 === Cartpauj Register Captcha ===
 Contributors: cartpauj
-Donate link: http://cartpauj.com/donate/
+Donate link: http://cartpauj.icomnow.com/donate/
 Tags: captcha, register, registration, register captcha, user captcha, registration captcha, captcha form
 Requires at least: 3.0
-Tested up to: 3.3
-Stable tag: 1.0.00
+Tested up to: 3.6
+Stable tag: 1.0.01
 
-Cartpauj Register Captcha does one simple task, and does it well. It adds an extra CAPTCHA field to the registration form in WordPress.
+Cartpauj Register Captcha does one simple task, and does it well. It prevents SPAM signups through WordPress's default registration form.
 
 == Description ==
-Cartpauj Register Captcha does one simple task, and does it well. It adds an extra CAPTCHA field to the registration form in WordPress. There are no settings to configure or get confused with. Just activate and watch those SPAM sign-ups fade away! If you'd also like to replace the WordPress logo on the signup page with your own custom logo, please see the comment near the bottom of the "cartpauj-register-captcha.php" file about how to do it.
+Cartpauj Register Captcha does one simple task, and does it well. It prevents SPAM signups through WordPress's default registration form. There are no settings to configure or get confused with. Just activate and watch those SPAM sign-ups fade away! Cartpauj Register Captcha blocks bots by using two different methods to deter bots:
+* Method 1, it adds a CAPTCHA code which can only be read by humans.
+* Method 2, it adds a field which is only visible to bots -- bots attempt to fill out all fields when they SPAM forms -- so if we detect input in the hidden field, we know it was a bot, and the signup is rejected.
 
 = Donate =
-[If you like this plugin please consider donating](http://cartpauj.com/donate)
+[If you like this plugin please consider donating](http://cartpauj.icomnow.com/donate)
 
 = Features =
 * Adds CAPTCHA to the WordPress register sign-up form.
-* NO settings or configurations to deal with
+* Adds hidden honeypot input to further deter bots.
+* NO settings or configurations to deal with.
 * Can replace the default WordPress logo on the login/register form (see note near bottom of "cartpauj-register-captcha.php" file for the how to.
 
 == Installation ==
@@ -24,10 +27,10 @@ Cartpauj Register Captcha does one simple task, and does it well. It adds an ext
 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
-3. Done! If you'd like to also replace the default WordPress logo on the login/register forms please see the note at the bottom of the "cartpauj-register-captcha.php" file for a how to.
+3. Done!
 
 If you have any issues please post something here:
-[Cartpauj Support Forums](http://cartpauj.com/forum "Cartpauj Support Forums")
+[Cartpauj Support Forums](http://cartpauj.icomnow.com/forum "Cartpauj Support Forums")
 
 == Note ==
 Cartpauj Register Captcha should work with older versions of WordPress as well but was not tested with anything older than 3.0
@@ -39,6 +42,8 @@ n/a
 n/a
 
 == Changelog ==
+= 1.0.01 =
+* Added honeypot protection to further deter bot signups
 = 1.0.00 =
 * Initial release
 
