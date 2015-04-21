@@ -3,7 +3,7 @@ Contributors: cartpauj
 Donate link: http://cartpauj.icomnow.com/donate/
 Tags: captcha, register, registration, register captcha, user captcha, registration captcha, captcha form
 Requires at least: 3.0
-Tested up to: 4.0
+Tested up to: 4.2
 Stable tag: 1.0.01
 
 Cartpauj Register Captcha does one simple task, and does it well. It prevents SPAM signups through WordPress's default registration form.
